@@ -36,24 +36,25 @@ def get_value(site_code=3179000):
         dates.append(prevelant_date)
     return values, dates
 
+#getting the return values into independant variables
+x_values, y_values = get_values(3179000)
 
-def plot_graph(x_values, y_values, site_code=3179000):
-    plt.figure("Hydrograph for site 0{} and parameter 00060".format(site_code))
-    plt.style.use('seaborn-notebook')
+#making a new matplotlib graph
+plt.figure("Hydrograph for site 0{} and parameter 00060")
+plt.style.use('seaborn-notebook')
 
-    plt.ylabel("Discharge, cubic feet per second")
-    plt.xlabel("past 7 days of water discharge.")
-    plt.plot(x_values, y_values, label="discharge")
-    plt.legend()
-    return plt.show()
+#characteristics of the graph
+plt.ylabel("Discharge, cubic feet per second")
+plt.xlabel("past 7 days of water discharge.")
 
+#plotting the data to the graph
+plt.plot(y_values, x_values, label="discharge")
+plt.legend()
+plt.show()
 
+#debugging statement to see the if the JSON values correspond
+print("X Values = {}\nY Values = {}".format(x_values, y_values))
 
-
-values = get_value(1646500)
-graph = plot_graph(values, values, 1646500)
-
-print(values)
 
 
 
