@@ -4,12 +4,12 @@ import matplotlib.pyplot as plt
 import dateutil.parser
 
 
-def get_value(site_code=3179000):
+def get_values(site_code=3179000):
     #2 empty lists that will have the needed values in it
     values = []
     dates = []
 
-    url = 'https://waterservices.usgs.gov/nwis/iv/?format=json&sites=0{}&period=P1D&siteType=ST&siteStatus=all'.format(site_code)
+    url = 'https://waterservices.usgs.gov/nwis/dv/?format=json&sites=0{}&period=P7D&siteType=ST&siteStatus=all'.format(site_code)
     print("Concatinated URL = {}".format(url))
     
     #to check if the site code is actaully a site code
@@ -32,8 +32,8 @@ def get_value(site_code=3179000):
         #slicing the long date and time to just get the day in DD format
         prevelant_date = raw_date[8:-13]
         #appending values to the empty lists
-        values.append(raw_value)
-        dates.append(prevelant_date)
+        values.append(float(raw_value))
+        dates.append(float(prevelant_date))
     return values, dates
 
 #getting the return values into independant variables
@@ -54,7 +54,4 @@ plt.show()
 
 #debugging statement to see the if the JSON values correspond
 print("X Values = {}\nY Values = {}".format(x_values, y_values))
-
-
-
 
