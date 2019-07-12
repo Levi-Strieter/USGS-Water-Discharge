@@ -39,7 +39,7 @@ def get_values(site_code=3179000):
     #a pandas function to open a json
     daily_data = pd.read_json(url_daily)
     instantanious_data = pd.read_json(url_instantanious)
-    statistical_data = pd.read_csv(url_statistical, sep="\t", skiprows=34)
+    statistical_data = pd.read_csv(url_statistical, sep="\t", comment="#")
 
     #converting the json into a dataframe fro easy data manipulation
     daily_dataframe = pd.DataFrame(daily_data)
